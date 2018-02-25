@@ -15,6 +15,7 @@ import java.util.Collection;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -48,7 +49,12 @@ public class WelcomeController extends AbstractController {
 		result = new ModelAndView("welcome/index");
 		SimpleDateFormat formatter;
 		String moment;
-
+		final String lang = LocaleContextHolder.getLocale().getLanguage();
+		boolean language = false;
+		System.out.println(lang);
+		if (lang == "es")
+			language = true;
+		System.out.println(language);
 		try {
 			final Collection<Announcement> announcements = this.announcementService.findAnnouncementsByPrincipal();
 			result.addObject("announcements", announcements);
@@ -60,6 +66,7 @@ public class WelcomeController extends AbstractController {
 		formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 		moment = formatter.format(new Date());
 
+		result.addObject("language", language);
 		result.addObject("name", name);
 		result.addObject("moment", moment);
 

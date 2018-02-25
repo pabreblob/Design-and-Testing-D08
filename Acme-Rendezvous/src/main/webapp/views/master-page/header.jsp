@@ -12,6 +12,7 @@
 
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
+<%@taglib prefix="jstl"	uri="http://java.sun.com/jsp/jstl/core"%>
 
 <div>
 	<a href="welcome/index.do"><img src="images/logo.png" alt="Acme-Rendezvous, Inc." /></a>
@@ -76,10 +77,13 @@
 			</li>
 			<li><a class="fNiv" href="user/list-all.do"><spring:message code="master.page.user.list"/></a></li>
 		</security:authorize>
+		
+		<!-- Opciones de lenguaje -->
+		<jstl:if test="${language == true}">
+			<li><a class="fNiv" href="?language=en"><spring:message	code="master.page.language" /></a></li>	
+		</jstl:if>
+		<jstl:if test="${language == false}">
+			<li><a class="fNiv" href="?language=es"><spring:message	code="master.page.language" /></a></li>
+		</jstl:if>
 	</ul>
 </div>
-
-<div>
-	<a href="?language=en">en</a> | <a href="?language=es">es</a>
-</div>
-
