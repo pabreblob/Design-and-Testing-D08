@@ -7,7 +7,8 @@ import java.util.Date;
 
 import javax.transaction.Transactional;
 
-import org.joda.time.DateTime;
+import org.joda.time.LocalDate;
+import org.joda.time.Years;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
@@ -79,9 +80,7 @@ public class RendezvousService {
 			Assert.isTrue(this.findOne(rendezvous.getId()).getMoment().after(new Date()));
 		}
 		Assert.isTrue(rendezvous.getMoment().after(new Date()));
-		final DateTime fechaActual = new DateTime();
-		final DateTime fechaNacimiento = new DateTime(this.userService.findByPrincipal().getBirthdate());
-		final Integer edad = fechaActual.getYear() - fechaNacimiento.getYear();
+		final Integer edad = this.calculateAge(this.userService.findByPrincipal().getBirthdate());
 		if (edad < 18)
 			Assert.isTrue(rendezvous.isAdultContent() == false);
 		final Rendezvous saved = this.rendezvousRepository.save(rendezvous);
@@ -117,9 +116,7 @@ public class RendezvousService {
 	public Rendezvous join(final Rendezvous rendezvous) {
 		Assert.isTrue(!rendezvous.getAttendants().contains(this.userService.findByPrincipal()));
 		final User user = this.userService.findByPrincipal();
-		final DateTime fechaActual = new DateTime();
-		final DateTime fechaNacimiento = new DateTime(user.getBirthdate());
-		final Integer edad = fechaActual.getYear() - fechaNacimiento.getYear();
+		final Integer edad = this.calculateAge(user.getBirthdate());
 		if (rendezvous.isAdultContent())
 			Assert.isTrue(edad >= 18);
 		user.getReservedRendezvous().add(rendezvous);
@@ -269,6 +266,13 @@ public class RendezvousService {
 		}
 		this.validator.validate(result, binding);
 		return result;
+	}
+
+	@SuppressWarnings("deprecation")
+	private int calculateAge(final Date birthdate) {
+		final LocalDate birth = new LocalDate(birthdate.getYear() + 1900, birthdate.getMonth() + 1, birthdate.getDate());
+		final LocalDate now = new LocalDate();
+		return Years.yearsBetween(birth, now).getYears();
 	}
 
 }

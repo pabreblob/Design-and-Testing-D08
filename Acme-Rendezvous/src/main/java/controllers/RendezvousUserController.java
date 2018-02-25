@@ -253,7 +253,7 @@ public class RendezvousUserController extends AbstractController {
 
 	@SuppressWarnings("deprecation")
 	private int calculateAge(final Date birthdate) {
-		final LocalDate birth = new LocalDate(birthdate.getYear(), birthdate.getMonth(), birthdate.getDate());
+		final LocalDate birth = new LocalDate(birthdate.getYear() + 1900, birthdate.getMonth() + 1, birthdate.getDate());
 		final LocalDate now = new LocalDate();
 		return Years.yearsBetween(birth, now).getYears();
 	}

@@ -63,9 +63,7 @@
 	
 	<jstl:if test="${pictureSize > 0}">
 	<div>
-	<a href="<jstl:out value="${rendezvous.pictureURL}"/>">
-	<spring:message code="rendez.picture"/>
-	</a>
+	<img alt="rendez.picture" src="<jstl:out value="${rendezvous.pictureURL}"/>">
 	</div>
 	</jstl:if>
 		
