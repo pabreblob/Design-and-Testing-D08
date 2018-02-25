@@ -18,16 +18,16 @@
 
 <b>Copyright &copy; <fmt:formatDate value="${date}" pattern="yyyy" /> Acme, Inc.</b>
 <br />
-<div style="background-color: grey; font-family: Arial; font-size: 30px" id="pruebacookie"></div>
+<div id="pruebacookie"></div>
 
 <script>
 $(document).ready(function() {
 	if (getCookie("accepted") !== ("true")) {
 		var language = getCookie("language");
 		if (language == "" || language === "en") {
-			document.getElementById("pruebacookie").innerHTML = "We use cookies to improve your experience. If you continue surfing this website, we consider that you accept their use.<br/><button type='button' onclick='acceptCookies()'>Accept</button>";
+			document.getElementById("pruebacookie").innerHTML = "We use cookies to improve your experience. If you continue surfing this website, we consider that you accept their use. <button type='button' onclick='acceptCookies()'>Accept</button>";
 		} else {
-			document.getElementById("pruebacookie").innerHTML = "Usamos cookies para mejorar su experiencia. Si continúa navegando en este sitio, consideramos que acepta su uso.<br/><button type='button' onclick='acceptCookies()'>Aceptar</button>";
+			document.getElementById("pruebacookie").innerHTML = "Usamos cookies para mejorar su experiencia. Si continúa navegando en este sitio, consideramos que acepta su uso. <button type='button' onclick='acceptCookies()'>Aceptar</button>";
 		}
 	}
 });

@@ -7,7 +7,6 @@
  * http://www.tdg-seville.info/License.html
  * 
  */
-
 .error {
 	color: red;
 	font-weight: bolder;
@@ -16,4 +15,17 @@
 .message {
 	color: red;
 	font-weight: bolder;
+}
+
+#pruebacookie {
+	position: fixed;
+	bottom: 0;
+	background-color: #0F0F0F;
+	color: white;
+	text-align: center;
+	width: 100%;
+	margin:0;
+	left:0;
+	font-size: 110%;
+	padding: 0.2%;
 }
