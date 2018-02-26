@@ -38,8 +38,8 @@
 	<display:table pagesize="5" class="displaytag" keepStatus="true"
 	name="administrators" requestURI="${requestURI}" id="row">
 	
-	<spring:message code="user.username" var="uNameHeader" />
-		<display:column property="userAccount.username" title="${uNameHeader}" />
+	<spring:message code="user.name" var="uNameHeader" />
+		<display:column property="name" title="${uNameHeader}" />
 	<spring:message code="user.email" var="emailHeader" />
 		<display:column property="email" title="${emailHeader}" />
 	<display:column>

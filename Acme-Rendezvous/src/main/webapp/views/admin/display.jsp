@@ -11,11 +11,6 @@
 
 	<div>
 	<p>
-	<spring:message code="admin.username"/>: <jstl:out value="${administrator.userAccount.username}"/> 
-	</p>
-	</div>
-	<div>
-	<p>
 	<spring:message code="admin.name"/>: <jstl:out value="${administrator.name}"/> 
 	</p>
 	</div>
