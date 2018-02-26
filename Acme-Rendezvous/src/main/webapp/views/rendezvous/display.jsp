@@ -67,7 +67,7 @@
 	</div>
 	</jstl:if>
 		
-	<div>
+<%-- 	<div>
 	<p><spring:message code="rendez.isFinalVer.status" />:
 	<jstl:if test="${rendezvous.finalMode != true}">
 	<spring:message code="rendez.isFinalVer.false" var="finalVer"/>
@@ -75,7 +75,7 @@
 	 <jstl:if test="${rendezvous.finalMode == true}">
 	<spring:message code="rendez.isFinalVer.true" var="finalVer"/>
 	 <jstl:out value="${finalVer}"/></jstl:if></p>
-	</div>
+	</div> --%>
 	
 	<div>
 	<p><spring:message code="rendez.adultContent" />:
@@ -87,7 +87,7 @@
 	 <jstl:out value="${finalVer}"/></jstl:if></p>
 	</div>
 	
-	<div>
+	<%-- <div>
 	<p><spring:message code="rendez.deleted" />:
 	<jstl:if test="${rendezvous.deleted != true}">
 	<spring:message code="rendez.isFinalVer.false" var="finalVer"/>
@@ -95,7 +95,7 @@
 	 <jstl:if test="${rendezvous.deleted == true}">
 	<spring:message code="rendez.isFinalVer.true" var="finalVer"/>
 	 <jstl:out value="${finalVer}"/></jstl:if></p>
-	</div>
+	</div> --%>
 	
 	<div>
 	<a href="user/list-attendants.do?rendezvousId=${rendezvous.id }">

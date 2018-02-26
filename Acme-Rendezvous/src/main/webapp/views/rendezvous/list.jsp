@@ -134,10 +134,16 @@
 	<display:column property="name" title="${titleHeader}"/>
 	<spring:message code="rendez.creator" var="creatorHeader" />
 	<display:column property="creator.name" title="${creatorHeader}" />
+	
+	<jstl:if test="${requestURI == 'rendezvous/user/list.do' }">
 	<spring:message code="rendez.isFinalVer.status" var="creatorHeader" />
 	<display:column property="finalMode" title="${creatorHeader}" />
+	</jstl:if>
+	
 	<spring:message code="rendez.adultContent" var="adultHeader" />
 	<display:column property="adultContent" title="${adultHeader}" />
+	
+	<jstl:if test="${requestURI == 'rendezvous/user/list.do' }">
 	<spring:message code="rendez.deleted" var="deletedHeader" />
 	<display:column  title="${deletedHeader}" >
 		<jstl:if test ="${r.deleted == false }">
@@ -151,6 +157,8 @@
 		</div>
 		</jstl:if>
 	</display:column>
+	</jstl:if>
+	
 	
 	<security:authorize access="hasRole('ADMIN')">
 	<display:column>
