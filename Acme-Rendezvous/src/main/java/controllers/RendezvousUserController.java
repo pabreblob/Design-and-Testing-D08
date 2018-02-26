@@ -213,7 +213,7 @@ public class RendezvousUserController extends AbstractController {
 	@RequestMapping(value = "/link", method = RequestMethod.POST, params = "save")
 	public ModelAndView linkSave(Rendezvous rendez, final BindingResult binding) {
 		ModelAndView res;
-		if (new ArrayList<>(rendez.getLinkedRendezvous()).get(0) == null)
+		if (rendez.getLinkedRendezvous() == null || new ArrayList<>(rendez.getLinkedRendezvous()).get(0) == null)
 			rendez.setLinkedRendezvous(new ArrayList<Rendezvous>());
 		final Collection<Rendezvous> oldRendezvous = new ArrayList<Rendezvous>(this.rendezvousService.findOne(rendez.getId()).getLinkedRendezvous());
 		oldRendezvous.removeAll(rendez.getLinkedRendezvous());
