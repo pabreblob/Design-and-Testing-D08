@@ -178,6 +178,16 @@
 			</jstl:if>
 		</display:column>
 </display:table>
+
+<jstl:if test="${requestURI == 'rendezvous/list.do' }">
+<jstl:if test="${adult == false }">
+<div>
+<p><spring:message code="rendez.adultWarning"/></p>
+</div>
+</jstl:if>
+</jstl:if>
+
+
 <jstl:if test="${requestURI == 'rendezvous/user/list.do' }">
 <div><a href="rendezvous/user/create.do"> <spring:message
 					code="rendez.create" />

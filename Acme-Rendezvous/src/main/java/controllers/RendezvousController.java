@@ -47,6 +47,7 @@ public class RendezvousController extends AbstractController {
 	public ModelAndView list() {
 		ModelAndView res;
 		Collection<Rendezvous> rendezvous;
+		Boolean adult = false;
 		rendezvous = this.rendezvousService.findFutureRendezvous();
 		res = new ModelAndView("rendezvous/list");
 		try {
@@ -55,8 +56,10 @@ public class RendezvousController extends AbstractController {
 			//			final DateTime fechaActual = new DateTime();
 
 			final Integer edad = this.calculateAge(user.getBirthdate());
-			if (edad >= 18)
+			if (edad >= 18) {
+				adult = true;
 				rendezvous = this.rendezvousService.findFutureRendezvousAdult();
+			}
 			if (user != null)
 				res.addObject("userLogged", user);
 		} catch (final Exception e) {
@@ -66,6 +69,7 @@ public class RendezvousController extends AbstractController {
 		final Timestamp timestamp = new Timestamp(currentTime.getTime());
 		res.addObject("rendezvous", rendezvous);
 		res.addObject("timestamp", timestamp);
+		res.addObject("adult", adult);
 		res.addObject("requestURI", "rendezvous/list.do");
 
 		return res;
