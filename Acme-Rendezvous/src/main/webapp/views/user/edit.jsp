@@ -36,7 +36,7 @@
 	<acme:textbox code="user.email" path="email" placeholder='${emailplaceholder}' /><br />
 	<acme:textbox code="user.phone" path="phone" /><br />
 	<acme:textbox code="user.address" path="address" /><br />
-	<span class="LINK" onclick="window.open('misc/terms.do').focus();"><spring:message code="user.acceptTerms"/></span><acme:checkbox code="user.blank" path="acceptTerms"/><br />
+	<a href="misc/terms.do" target="_blank"><spring:message code="user.acceptTerms"/></a><acme:checkbox code="user.blank" path="acceptTerms"/><br />
 	<acme:submit name="save" code="user.save"  />
 	<acme:cancel code="user.cancel" url="welcome/index.do" /><br />	
 </form:form>
