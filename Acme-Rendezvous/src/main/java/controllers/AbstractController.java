@@ -41,5 +41,21 @@ public class AbstractController {
 
 		return result;
 	}
+	@RequestMapping(value = "/misc/contact")
+	public ModelAndView contact() {
+		ModelAndView result;
+
+		result = new ModelAndView("misc/contact");
+
+		return result;
+	}
+	@RequestMapping(value = "/misc/cookies")
+	public ModelAndView cookies() {
+		ModelAndView result;
+
+		result = new ModelAndView("misc/cookies");
+
+		return result;
+	}
 
 }
