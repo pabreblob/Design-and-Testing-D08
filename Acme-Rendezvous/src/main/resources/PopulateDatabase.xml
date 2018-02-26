@@ -269,6 +269,10 @@
 			<list>
 				<ref bean="Announcement1" />
 				<ref bean="Announcement2" />
+				<ref bean="Announcement4" />
+				<ref bean="Announcement5" />
+				<ref bean="Announcement6" />
+				<ref bean="Announcement7" />
 			</list>
 		</property>
 		<property name="questions">
@@ -527,6 +531,30 @@
 		<property name="title" value="titleann3" />
 		<property name="description" value="descann3" />
 		<property name="rendezvous"><ref bean="Rendezvous2" /></property>
+	</bean>
+	<bean id="Announcement4" class="domain.Announcement">
+		<property name="moment" value="2017/06/21 12:30" />
+		<property name="title" value="titleann4" />
+		<property name="description" value="descann4" />
+		<property name="rendezvous"><ref bean="Rendezvous1" /></property>
+	</bean>
+	<bean id="Announcement5" class="domain.Announcement">
+		<property name="moment" value="2017/06/21 12:30" />
+		<property name="title" value="titleann5" />
+		<property name="description" value="descann5" />
+		<property name="rendezvous"><ref bean="Rendezvous1" /></property>
+	</bean>
+	<bean id="Announcement6" class="domain.Announcement">
+		<property name="moment" value="2017/06/21 12:30" />
+		<property name="title" value="titleann6" />
+		<property name="description" value="descann6" />
+		<property name="rendezvous"><ref bean="Rendezvous1" /></property>
+	</bean>
+	<bean id="Announcement7" class="domain.Announcement">
+		<property name="moment" value="2017/06/21 12:30" />
+		<property name="title" value="titleann7" />
+		<property name="description" value="descann7" />
+		<property name="rendezvous"><ref bean="Rendezvous1" /></property>
 	</bean>
 	<bean id="Comment1" class="domain.Comment">
 		<property name="moment" value="2017/07/29 12:30" />
