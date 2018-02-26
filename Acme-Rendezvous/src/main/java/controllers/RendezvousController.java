@@ -148,7 +148,12 @@ public class RendezvousController extends AbstractController {
 		res.addObject("isFinal", isFinal);
 		res.addObject("rsvpd", rsvpd);
 		res.addObject("announcementSize", this.rendezvousService.findAnnouncementsByRendezId(r.getId()).size());
-		res.addObject("pictureSize", r.getPictureURL().length());
+		int pictureSize;
+		if (r.getPictureURL() == null || r.getPictureURL().length() == 0)
+			pictureSize = 0;
+		else
+			pictureSize = r.getPictureURL().length();
+		res.addObject("pictureSize", pictureSize);
 
 		return res;
 	}
