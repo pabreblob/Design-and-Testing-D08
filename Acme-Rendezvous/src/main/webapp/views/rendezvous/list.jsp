@@ -136,24 +136,38 @@
 	<display:column property="creator.name" title="${creatorHeader}" />
 	
 	<jstl:if test="${requestURI == 'rendezvous/user/list.do' }">
-	<spring:message code="rendez.isFinalVer.status" var="creatorHeader" />
-	<display:column property="finalMode" title="${creatorHeader}" />
+	<spring:message code="rendez.isFinalVer.status" var="finalHeader" />
+	<display:column title="${finalHeader}" >
+	<jstl:if test="${r.finalMode == true}">
+	<spring:message code ="rendez.isFinalVer.true"/>
+	</jstl:if>
+	<jstl:if test="${r.finalMode == false}">
+	<spring:message code ="rendez.isFinalVer.false"/>
+	</jstl:if>
+	</display:column>
 	</jstl:if>
 	
 	<spring:message code="rendez.adultContent" var="adultHeader" />
-	<display:column property="adultContent" title="${adultHeader}" />
+	<display:column title="${adultHeader}" >
+	<jstl:if test="${r.adultContent == true}">
+	<spring:message code ="rendez.isFinalVer.true"/>
+	</jstl:if>
+	<jstl:if test="${r.adultContent == false}">
+	<spring:message code ="rendez.isFinalVer.false"/>
+	</jstl:if>
+	</display:column>
 	
 	<jstl:if test="${requestURI == 'rendezvous/user/list.do' }">
 	<spring:message code="rendez.deleted" var="deletedHeader" />
 	<display:column  title="${deletedHeader}" >
 		<jstl:if test ="${r.deleted == false }">
 		<div class = "NOBORRADO">
-			<jstl:out value="${r.deleted}"></jstl:out>
+				<spring:message code ="rendez.isFinalVer.false"/>
 		</div>
 		</jstl:if>
 		<jstl:if test ="${r.deleted == true }">
 		<div class = "BORRADO">
-			<jstl:out value="${r.deleted}"></jstl:out>
+			<spring:message code ="rendez.isFinalVer.true"/>
 		</div>
 		</jstl:if>
 	</display:column>

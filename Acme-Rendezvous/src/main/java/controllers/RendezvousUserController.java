@@ -82,6 +82,7 @@ public class RendezvousUserController extends AbstractController {
 		rendezvous = this.rendezvousService.findAllRendezvousLinked(rendezvousId);
 		res = new ModelAndView("rendezvous/list");
 		final User user = this.userService.findByPrincipal();
+		Assert.isTrue(this.rendezvousService.findOne(rendezvousId).getCreator().equals(user));
 		final Date currentTime = new Date(System.currentTimeMillis());
 		final Timestamp timestamp = new Timestamp(currentTime.getTime());
 		res.addObject("rendezvous", rendezvous);
