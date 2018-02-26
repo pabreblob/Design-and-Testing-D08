@@ -38,7 +38,7 @@ public class AnnouncementUserController extends AbstractController {
 		final Collection<Announcement> announcements = this.announcementService.findAnnouncementsByPrincipal();
 		ModelAndView res;
 		res = new ModelAndView("announcement/list");
-		res.addObject("requestURI", "announcement/list.do");
+		res.addObject("requestURI", "announcement/user/list.do");
 		res.addObject("announcements", announcements);
 		return res;
 	}
