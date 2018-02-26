@@ -1,0 +1,13 @@
+<Connector SSLEnabled="true" clientAuth="false" keystoreFile="${user.home}/keystore.jks" keystorePass="changeit" maxThreads="200" port="8443" protocol="org.apache.coyote.http11.Http11NioProtocol" scheme="https" secure="true" sslProtocol="TLS"/>
+
+<security-constraint>
+    <web-resource-collection>
+        <web-resource-name>Secured</web-resource-name>
+        <url-pattern>/*</url-pattern>
+    </web-resource-collection>
+    <user-data-constraint>
+        <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+    </user-data-constraint>
+  </security-constraint>
+
+keytool -genkey -alias tomcat -keysize 2048 -keyalg RSA -keystore keystore.jks -validity 3650
