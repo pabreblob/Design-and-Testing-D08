@@ -16,7 +16,7 @@
 <%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
-<div>
+<div id="terms">
 	
 	<spring:message code="terms.text27"/><br>
 	<spring:message code="terms.text28"/><br>
