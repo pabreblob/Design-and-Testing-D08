@@ -8,7 +8,6 @@ import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
 
 import org.joda.time.LocalDate;
 import org.joda.time.Years;
@@ -135,7 +134,7 @@ public class UserController extends AbstractController {
 	}
 
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
-	public ModelAndView save(@Valid final UserForm userForm, final BindingResult binding, final HttpServletRequest request) {
+	public ModelAndView save(final UserForm userForm, final BindingResult binding, final HttpServletRequest request) {
 		ModelAndView result;
 		User test;
 		test = this.userService.reconstruct(userForm, binding);
