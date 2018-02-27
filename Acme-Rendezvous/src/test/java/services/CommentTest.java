@@ -39,7 +39,7 @@ public class CommentTest extends AbstractTest {
 	@Test
 	public void testCreate() {
 		super.authenticate("User1");
-		final Rendezvous r = this.rendezvousService.findOne(41);
+		final Rendezvous r = new ArrayList<Rendezvous>(this.rendezvousService.findAll()).get(0);
 		final Comment res = this.commentService.create(r);
 		Assert.notNull(res);
 		super.unauthenticate();
@@ -47,7 +47,8 @@ public class CommentTest extends AbstractTest {
 
 	@Test
 	public void testFindOne() {
-		final Comment res = this.commentService.findOne(48);
+		final Comment r = new ArrayList<Comment>(this.commentService.findAll()).get(0);
+		final Comment res = this.commentService.findOne(r.getId());
 		Assert.notNull(res);
 	}
 
@@ -61,7 +62,7 @@ public class CommentTest extends AbstractTest {
 	@Test
 	public void testSave() {
 		super.authenticate("User1");
-		final Rendezvous r = this.rendezvousService.findOne(41);
+		final Rendezvous r = new ArrayList<Rendezvous>(this.rendezvousService.findAll()).get(0);
 		final Comment res = this.commentService.create(r);
 		res.setText("texto");
 		final Comment saved = this.commentService.save(res, r);
@@ -73,7 +74,7 @@ public class CommentTest extends AbstractTest {
 	@Test
 	public void testDelete() {
 		super.authenticate("Admin");
-		final Rendezvous r = this.rendezvousService.findOne(41);
+		final Rendezvous r = new ArrayList<Rendezvous>(this.rendezvousService.findAll()).get(0);
 		final List<Comment> comments = new ArrayList<Comment>(r.getComments());
 		final Comment c = comments.get(0);
 		this.commentService.delete(c);
@@ -92,8 +93,8 @@ public class CommentTest extends AbstractTest {
 
 	@Test
 	public void testFindCommentByReplyId() {
-		final Reply r = this.replyService.findOne(50);
-		final Comment c = this.commentService.findCommentByReplyId(50);
+		final Reply r = new ArrayList<Reply>(this.replyService.findAll()).get(0);
+		final Comment c = this.commentService.findCommentByReplyId(r.getId());
 		Assert.isTrue(c.getReplies().contains(r));
 
 	}
@@ -104,7 +105,7 @@ public class CommentTest extends AbstractTest {
 		boolean check = true;
 		try {
 			super.authenticate("User1");
-			final Rendezvous r = this.rendezvousService.findOne(41);
+			final Rendezvous r = new ArrayList<Rendezvous>(this.rendezvousService.findAll()).get(0);
 			final List<Comment> comments = new ArrayList<Comment>(r.getComments());
 			final Comment c = comments.get(0);
 			this.commentService.delete(c);
@@ -119,7 +120,7 @@ public class CommentTest extends AbstractTest {
 	public void testDeleteUnauthenticated() {
 		boolean check = true;
 		try {
-			final Rendezvous r = this.rendezvousService.findOne(41);
+			final Rendezvous r = new ArrayList<Rendezvous>(this.rendezvousService.findAll()).get(0);
 			final List<Comment> comments = new ArrayList<Comment>(r.getComments());
 			final Comment c = comments.get(0);
 			this.commentService.delete(c);

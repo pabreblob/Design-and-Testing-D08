@@ -36,7 +36,7 @@ public class ReplyTest extends AbstractTest {
 	@Test
 	public void testCreate() {
 		super.authenticate("User1");
-		final Comment c = this.commentService.findOne(49);
+		final Comment c = new ArrayList<Comment>(this.commentService.findAll()).get(0);
 		final Reply res = this.replyService.create(c);
 		Assert.notNull(res);
 		super.unauthenticate();
@@ -44,7 +44,8 @@ public class ReplyTest extends AbstractTest {
 
 	@Test
 	public void testFindOne() {
-		final Reply res = this.replyService.findOne(50);
+		final Reply r = new ArrayList<Reply>(this.replyService.findAll()).get(0);
+		final Reply res = this.replyService.findOne(r.getId());
 		Assert.notNull(res);
 	}
 
@@ -58,7 +59,7 @@ public class ReplyTest extends AbstractTest {
 	@Test
 	public void testSave() {
 		super.authenticate("User1");
-		final Comment c = this.commentService.findOne(49);
+		final Comment c = new ArrayList<Comment>(this.commentService.findAll()).get(0);
 		final Reply res = this.replyService.create(c);
 		res.setText("textito");
 		final Reply saved = this.replyService.save(res, c);
@@ -69,7 +70,7 @@ public class ReplyTest extends AbstractTest {
 	@Test
 	public void testDelete() {
 		super.authenticate("Admin");
-		final Comment c = this.commentService.findOne(49);
+		final Comment c = new ArrayList<Comment>(this.commentService.findAll()).get(0);
 		final List<Reply> replies = new ArrayList<Reply>(c.getReplies());
 		final Reply res = replies.get(0);
 		this.replyService.delete(res);
