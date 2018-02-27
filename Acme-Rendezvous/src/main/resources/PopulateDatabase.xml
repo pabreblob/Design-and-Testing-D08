@@ -584,7 +584,7 @@
 	<bean id="Comment3" class="domain.Comment">
 		<property name="moment" value="2017/07/21 12:30" />
 		<property name="text" value="comment3" />
-		<property name="pictureURL"><null/></property>
+		<property name="pictureURL" value="http://absfreepic.com/absolutely_free_photos/small_photos/modern-city-landscape-2527x1896_96116.jpg" />
 		
 		<property name="author"><ref bean="User3" /></property>
 		<property name="replies">
