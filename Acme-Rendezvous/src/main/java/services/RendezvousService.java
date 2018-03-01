@@ -179,7 +179,7 @@ public class RendezvousService {
 		return this.rendezvousRepository.findRendezvousCreatedByUserAccountId(id);
 	}
 
-	public Collection<Rendezvous> findFutureRendezvousCreatedByPrincipal() {
+	public Collection<Rendezvous> findRendezvousNotDeletedCreatedByPrincipal() {
 		final int id = LoginService.getPrincipal().getId();
 		Assert.notNull(id);
 		return this.rendezvousRepository.findRendezvousNotDeletedCreatedByUserId(id);
@@ -201,18 +201,18 @@ public class RendezvousService {
 		return this.rendezvousRepository.findRendezvousJoinedAdultByUserId(id);
 	}
 
-	public Collection<Rendezvous> findFutureRendezvous() {
+	public Collection<Rendezvous> findFinalRendezvous() {
 		return this.rendezvousRepository.findFinalRendezvous();
 	}
 
-	public Collection<Rendezvous> findFutureRendezvousAdult() {
+	public Collection<Rendezvous> findFinalRendezvousAdult() {
 		return this.rendezvousRepository.findFinalRendezvousAdult();
 	}
 
-	public Collection<Rendezvous> findFutureRendezvousLinked(final int rendezvousId) {
+	public Collection<Rendezvous> findFinalRendezvousLinked(final int rendezvousId) {
 		return this.rendezvousRepository.findRendezvousLinked(rendezvousId);
 	}
-	public Collection<Rendezvous> findFutureRendezvousLinkedAdult(final int rendezvousId) {
+	public Collection<Rendezvous> findFinalRendezvousLinkedAdult(final int rendezvousId) {
 		return this.rendezvousRepository.findRendezvousLinkedAdult(rendezvousId);
 	}
 

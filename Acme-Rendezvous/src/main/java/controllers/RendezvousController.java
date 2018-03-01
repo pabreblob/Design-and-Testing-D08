@@ -48,7 +48,7 @@ public class RendezvousController extends AbstractController {
 		ModelAndView res;
 		Collection<Rendezvous> rendezvous;
 		Boolean adult = false;
-		rendezvous = this.rendezvousService.findFutureRendezvous();
+		rendezvous = this.rendezvousService.findFinalRendezvous();
 		res = new ModelAndView("rendezvous/list");
 		try {
 			final User user = this.userService.findByPrincipal();
@@ -58,7 +58,7 @@ public class RendezvousController extends AbstractController {
 			final Integer edad = this.calculateAge(user.getBirthdate());
 			if (edad >= 18) {
 				adult = true;
-				rendezvous = this.rendezvousService.findFutureRendezvousAdult();
+				rendezvous = this.rendezvousService.findFinalRendezvousAdult();
 			}
 			if (user != null)
 				res.addObject("userLogged", user);
@@ -79,13 +79,13 @@ public class RendezvousController extends AbstractController {
 	public ModelAndView listLinked(@RequestParam final int rendezvousId) {
 		ModelAndView res;
 		Collection<Rendezvous> rendezvous;
-		rendezvous = this.rendezvousService.findFutureRendezvousLinked(rendezvousId);
+		rendezvous = this.rendezvousService.findFinalRendezvousLinked(rendezvousId);
 		res = new ModelAndView("rendezvous/list");
 		try {
 			final User user = this.userService.findByPrincipal();
 			final Integer edad = this.calculateAge(user.getBirthdate());
 			if (edad >= 18)
-				rendezvous = this.rendezvousService.findFutureRendezvousLinkedAdult(rendezvousId);
+				rendezvous = this.rendezvousService.findFinalRendezvousLinkedAdult(rendezvousId);
 			if (user != null)
 				res.addObject("userLogged", user);
 		} catch (final Exception e) {
@@ -107,14 +107,14 @@ public class RendezvousController extends AbstractController {
 		final Rendezvous r = this.rendezvousService.findOne(rendezvousId);
 		Assert.isTrue(!r.isDeleted());
 		final int linkedSize = r.getLinkedRendezvous().size();
-		int linked2Size = this.rendezvousService.findFutureRendezvousLinked(rendezvousId).size();
+		int linked2Size = this.rendezvousService.findFinalRendezvousLinked(rendezvousId).size();
 		System.out.println(linked2Size);
 		try {
 			final User user = this.userService.findByPrincipal();
 			final Integer edad = this.calculateAge(user.getBirthdate());
 			if (edad >= 18)
 				mayor = true;
-			linked2Size = this.rendezvousService.findFutureRendezvousLinkedAdult(rendezvousId).size();
+			linked2Size = this.rendezvousService.findFinalRendezvousLinkedAdult(rendezvousId).size();
 		} catch (final Exception e) {
 
 		}

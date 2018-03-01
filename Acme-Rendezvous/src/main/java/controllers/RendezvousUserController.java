@@ -44,7 +44,7 @@ public class RendezvousUserController extends AbstractController {
 		ModelAndView res;
 		Collection<Rendezvous> rendezvous;
 		rendezvous = this.rendezvousService.findRendezvousCreatedByPrincipal();
-		final int rendezSizeLinked = this.rendezvousService.findFutureRendezvousCreatedByPrincipal().size() - 1;
+		final int rendezSizeLinked = this.rendezvousService.findRendezvousNotDeletedCreatedByPrincipal().size() - 1;
 		System.out.println(rendezSizeLinked);
 		res = new ModelAndView("rendezvous/list");
 		final Date currentTime = new Date(System.currentTimeMillis());
@@ -203,7 +203,7 @@ public class RendezvousUserController extends AbstractController {
 	public ModelAndView link(@RequestParam final int rendezvousId) {
 		ModelAndView res;
 		final Rendezvous rendez = this.rendezvousService.findOne(rendezvousId);
-		final Collection<Rendezvous> rendezs = this.rendezvousService.findFutureRendezvousCreatedByPrincipal();
+		final Collection<Rendezvous> rendezs = this.rendezvousService.findRendezvousNotDeletedCreatedByPrincipal();
 		rendezs.remove(rendez);
 		res = new ModelAndView("rendezvous/link");
 		res.addObject("rendezvous", rendez);
